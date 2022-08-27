@@ -1,24 +1,23 @@
-const readLine = require('readline-sync')
+const readline = require('readline-sync');
 
-function start (){
-    const content = {}
+function start(){
+    const content = {};
+    content.searchTerm = askAndReturnSerchTerm();
+    content.prefix = askAndReturnPrefix();
 
-    content.searchTerm = askAndReturnSearchTerm()
-    content.prefix = AskAndReturnPrefix()
-
-    function askAndReturnSearchTerm() {
-        return readLine.question('Type a Wikipedia search term: ')
+    function askAndReturnSerchTerm(){
+        return readline.question('Type a Wikipedia search term: ');
     }
 
-    function AskAndReturnPrefix(){
-        const prefixes = ['Who is', 'What is', 'The history of']
-        const SelectedPrefixIndex = readLine.keyInSelect(prefixes, 'Choose one option: ')
-        const SelectedPrefixText = prefixes[SelectedPrefixIndex]
+    function askAndReturnPrefix() {
+        const prefix = ['Who is', 'What is', 'The History of'];
+        const selectedPrefixIndex = readline.keyInSelect(prefix, 'Choose one Option: ');
+        const selectedPrefixText = prefix[selectedPrefixIndex];
 
-        return SelectedPrefixText
+        return selectedPrefixText;
     }
 
-    console.log(content)
-}
+    console.log(content);
+};
 
-start()
+start();
